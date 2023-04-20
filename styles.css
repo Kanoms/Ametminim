@@ -146,6 +146,7 @@ button:active {
 
 .container-2 {
   width: 682px;
+  margin: 0 auto;
 }
 
 .container-3 {
@@ -238,7 +239,7 @@ header nav {
 
 /* HERO SECTION */
 
-.hero {
+.home-page .hero {
   position: relative;
   margin: 0 auto;
   display: grid;
@@ -632,7 +633,14 @@ body.dash-design section {
     margin-bottom: 1rem;
   }
 
+  .blog-page .hero {
+    display: flex;
+  }
+
   /* WORK SECTION  */
+  .work-page .hero {
+    display: flex;
+  }
 
   .work-page .v-p-2020,
   .work-page .days-malayalam,
@@ -701,6 +709,11 @@ body.dash-design section {
     max-width: 100%;
     height: auto;
   }
+
+  .dash-img {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 /* tablets */
@@ -718,6 +731,7 @@ body.dash-design section {
   .container-2 {
     width: 100%;
     padding: 2rem;
+    margin: 0 auto;
   }
 
   .container-3 {
@@ -841,6 +855,11 @@ body.dash-design section {
     margin-bottom: 2rem;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 2rem;
+  }
+
+  .dash-img {
+    display: flex;
+    justify-content: center;
   }
 }
 
