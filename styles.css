@@ -4,10 +4,61 @@
 /* GOOGLE FONT */
 
 /* INIT */
-* {
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+li {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background: var(--sec-theme-bg);
+  font-family: TT-Hoves;
+}
+
+/* A elements that don't have a class get default styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
 }
 
 body {
@@ -84,9 +135,24 @@ button:active {
 /* VARIABLES */
 
 /* UTILITY CLASSES */
-.container-pd {
-  padding: 0.6rem 6rem;
+.container-nav {
+  padding: 0.6rem 10rem;
 }
+
+.container-1 {
+  width: 856px;
+  margin: 0 auto;
+}
+
+.container-2 {
+  width: 682px;
+}
+
+.container-3 {
+  width: 418px;
+  height: 295px;
+}
+
 /* UTILITY CLASSES */
 
 /* HEADER SIZING */
@@ -143,7 +209,6 @@ p {
 }
 
 header nav {
-  width: 90%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -174,10 +239,11 @@ header nav {
 /* HERO SECTION */
 
 .hero {
-  width: 80%;
+  position: relative;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 66% 33%;
+  grid-template-columns: 506px 243px;
+  gap: 101px;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 6rem;
@@ -189,11 +255,20 @@ header nav {
 
 .hero div p {
   margin-bottom: 1.5rem;
-  width: 60%;
 }
 
-.hero div:last-of-type {
-  margin: 0 auto;
+.hero-img {
+  position: relative;
+}
+
+.hero-img img:last-of-type {
+  position: absolute;
+  bottom: 15px;
+  left: 5px;
+}
+
+.hero-img img:first-of-type {
+  position: relative;
 }
 
 .sec-bg {
@@ -203,7 +278,6 @@ header nav {
 /* MAIN SECTION  */
 
 section {
-  width: 85%;
   margin: 0 auto;
 }
 
@@ -219,11 +293,10 @@ section {
 }
 
 .posts {
-  display: grid;
-  grid-template-columns: 40% 40%;
+  display: flex;
+  gap: 20px;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
   padding-bottom: 2rem;
 }
 
@@ -239,19 +312,28 @@ section {
 .post-info {
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
 .home-page section {
   margin-top: 1.5rem;
 }
 
+.separator {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+/* SECTION 2 */
+
 .d-d,
 .v-p-2020,
 .days-malayalam,
 .components {
-  display: flex;
+  display: grid;
+  grid-template-columns: 246px 594px;
   align-items: center;
-  gap: 2rem;
+  gap: 18px;
   margin-bottom: 2rem;
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 2rem;
@@ -268,10 +350,6 @@ section {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-}
-
-.content p {
-  width: 80%;
 }
 
 .work-info h6 {
@@ -304,9 +382,8 @@ footer {
 
 /* HERO SECTION */
 
-body.blog-page .hero,
-body.blog-page section {
-  width: 50%;
+body.blog-page .hero {
+  margin-bottom: 30px;
 }
 
 .blog-page section {
@@ -324,24 +401,28 @@ body.blog-page section {
   color: var(--main-theme-text);
 }
 
-.blog-page p {
-  width: 90%;
-}
-
 /* WORK PAGE   */
 
 /* HERO SECTION  */
-body.work-page .hero,
-body.work-page section {
-  width: 50%;
-}
-
-.work-page .content p {
-  width: 72%;
+body.work-page .hero {
+  margin-bottom: 30px;
 }
 
 .work-page .top-panel {
   display: none;
+}
+
+.work-page .d-d,
+.work-page .v-p-2020,
+.work-page .days-malayalam,
+.work-page .components {
+  display: grid;
+  grid-template-columns: 246px 418px;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 2rem;
 }
 
 #mobile-only {
@@ -355,7 +436,10 @@ body.work-page section {
 body.dash-design .hero,
 body.dash-design section {
   margin-bottom: 2rem;
-  width: 50%;
+}
+
+body.dash-design .hero span {
+  display: block;
 }
 
 .dash-design h1 {
@@ -385,17 +469,34 @@ body.dash-design section {
   gap: 2rem;
 }
 
-.dash-design p {
-  width: 80%;
-}
-
 .dash-design img {
   max-width: 100%;
   height: auto;
 }
 
 /* media-query */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
+  .container-nav {
+    padding: 0.6rem 2rem;
+  }
+
+  .container-1 {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .container-2 {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .container-3 {
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+  }
+
   /* HEADER SIZING */
   h1 {
     font-size: 32px;
@@ -455,7 +556,6 @@ body.dash-design section {
 
   /* HERO SECTION  */
   body.home-page .hero {
-    width: 80%;
     margin: 0 auto;
     display: flex;
     flex-direction: column-reverse;
@@ -523,10 +623,6 @@ body.dash-design section {
   }
 
   /* BLOG SECTION  */
-  body.blog-page .hero,
-  body.blog-page section {
-    width: 90%;
-  }
 
   .blog-page p {
     width: 100%;
@@ -537,9 +633,20 @@ body.dash-design section {
   }
 
   /* WORK SECTION  */
-  body.work-page .hero,
-  body.work-page section {
-    width: 90%;
+
+  .work-page .v-p-2020,
+  .work-page .days-malayalam,
+  .work-page .components {
+    display: none;
+  }
+
+  .work-page .d-d {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
   }
 
   body.work-page .hero {
@@ -570,7 +677,10 @@ body.dash-design section {
   body.dash-design .hero,
   body.dash-design section {
     margin-bottom: 2rem;
-    width: 90%;
+  }
+
+  body.dash-design .hero span {
+    display: inline;
   }
 
   body.dash-design .hero,
@@ -593,7 +703,149 @@ body.dash-design section {
   }
 }
 
-@media screen and (min-width: 1024px) {
+/* tablets */
+@media only screen and (min-width: 767px) and (max-width: 991px) {
+  .container-nav {
+    padding: 0.6rem 2rem;
+  }
+
+  .container-1 {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .container-2 {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .container-3 {
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+  }
+
+  /* HEADER SIZING */
+  h1 {
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 27px;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  h4 {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  h5 {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--light-theme-text);
+  }
+
+  h6 {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  /* HEADER SIZING */
+
+  /* HEADER */
+  .nav-list {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+  }
+
+  header ul.dropdown li {
+    display: block;
+  }
+
+  header ul.dropdown {
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    display: none;
+  }
+
+  .menu:hover {
+    color: transparent;
+    padding-right: 3rem;
+  }
+
+  .menu:hover ul {
+    display: block;
+    color: var(--main-theme-text);
+  }
+
+  /* HERO SECTION  */
+  body.home-page .hero {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    margin-bottom: 6rem;
+    text-align: center;
+  }
+
+  .hero div p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 2rem;
+  }
+
+  .hero div:first-of-type {
+    gap: 2rem;
+  }
+
+  .hero-img img {
+    max-width: 100%;
+    width: 500px;
+    height: auto;
+  }
+
+  .home-page .d-d,
+  .v-p-2020,
+  .days-malayalam,
+  .components {
+    display: grid;
+    grid-template-columns: 246px auto;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 2rem;
+  }
+
+  .work-page .d-d,
+  .work-page .v-p-2020,
+  .work-page .days-malayalam,
+  .work-page .components {
+    display: grid;
+    grid-template-columns: 246px auto;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 2rem;
+  }
+}
+
+/* laptops */
+@media only screen and (min-width: 992px) and (max-width: 1023px) {
   /* HEADER SIZING */
   h1 {
     font-size: 44px;
@@ -625,237 +877,15 @@ body.dash-design section {
     font-size: 18px;
     font-weight: 400;
   }
+
+  .container-nav {
+    padding: 0.6rem 6rem;
+  }
   /* HEADER SIZING */
-
-  /* PARAGRAGP SETTINGS */
-  p {
-    line-height: 23.5px;
-  }
-
-  /* MAIN SECTION  */
-
-  /* HERO SECTION */
-
-  .hero {
-    width: 50%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 66% 33%;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 6rem;
-  }
-
-  .hero h1 {
-    margin-bottom: 1.5rem;
-  }
-
-  .hero div p {
-    margin-bottom: 1.5rem;
-    width: 80%;
-  }
-
-  .hero div:last-of-type {
-    margin: 0 auto;
-  }
-
-  .sec-bg {
-    background: var(--post-bg);
-  }
-
-  /* MAIN SECTION  */
-
-  section {
-    width: 50%;
-    margin: 0 auto;
-  }
-
-  .top-panel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    line-height: 60px;
-  }
-
-  .top-panel a {
-    color: var(--sec-theme-text);
-  }
-
-  .posts {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    align-items: center;
-    gap: 2rem;
-    justify-content: space-between;
-    padding-bottom: 2rem;
-  }
-
-  .design,
-  .figma {
-    background: var(--main-theme-bg);
-    padding: 1.5rem;
-    display: grid;
-    gap: 1.5rem;
-    border-radius: 4px;
-  }
-
-  .post-info {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .home-page section {
-    margin-top: 1.5rem;
-  }
-
-  .d-d,
-  .v-p-2020,
-  .days-malayalam,
-  .components {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 2rem;
-  }
-
-  .work-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .content {
-    display: grid;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .content p {
-    width: 100%;
-  }
-
-  .work-info h6 {
-    background-color: var(--btn-sec-bg);
-    color: var(--main-theme-bg);
-    border-radius: 16px;
-    padding: 0.1rem 8px;
-  }
-
-  footer {
-    margin-top: 6rem;
-    text-align: center;
-  }
-
-  .icons {
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  .copyright {
-    font-size: 14px;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  /* BLOG PAGE */
-
-  /* HERO SECTION */
-
-  body.blog-page .hero,
-  body.blog-page section {
-    width: 50%;
-  }
-
-  .blog-page section {
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 2rem;
-    display: grid;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .blog-page .date,
-  .separator {
-    color: var(--main-theme-text);
-  }
-
-  .blog-page p {
-    width: 100%;
-  }
-
-  /* WORK PAGE   */
-
-  /* HERO SECTION  */
-  body.work-page .hero,
-  body.work-page section {
-    width: 50%;
-  }
-
-  .work-page .content p {
-    width: 100%;
-  }
-
-  .work-page .top-panel {
-    display: none;
-  }
-
-  #mobile-only {
-    display: none;
-  }
-
-  /* DASH DESIGN  */
-
-  body.dash-design .hero,
-  body.dash-design section {
-    margin-bottom: 2rem;
-    width: 50%;
-  }
-
-  .dash-design h6 {
-    background-color: var(--btn-bg);
-  }
-
-  .dash-design h5 {
-    color: var(--main-theme-text);
-  }
-
-  .dash-design .work-info {
-    margin-bottom: 2rem;
-  }
-
-  .dash-design section:first-of-type p,
-  body.dash-design section {
-    margin-bottom: 4rem;
-  }
-
-  .dash-design section:last-of-type {
-    display: grid;
-
-    gap: 2rem;
-  }
-
-  .dash-design p {
-    width: 100%;
-  }
-
-  .dash-design img {
-    width: 1000px;
-    max-width: 100%;
-    height: auto;
-  }
-
-  .dash-design h1 {
-    font-size: 34px;
-  }
 }
-
-@media screen and (max-width: 1800px) {
+/* larger screens/desktops */
+@media only screen and (min-width: 1024px) {
+  .container-nav {
+    padding: 0.6rem 8rem;
+  }
 }
